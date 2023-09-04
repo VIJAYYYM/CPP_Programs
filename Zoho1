@@ -1,0 +1,23 @@
+*/
+class Solution
+{
+public:
+    bool detectLoop(Node* head)
+    {
+        Node* slow = head;
+        Node* fast = head;
+
+        while (slow != nullptr && fast != nullptr && fast->next != nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            // If there is a loop, the slow and fast pointers will eventually meet
+            if (slow == fast)
+                return true;
+        }
+
+        // If there is no loop, the fast pointer will reach the end of the list
+        return false;
+    }
+};
